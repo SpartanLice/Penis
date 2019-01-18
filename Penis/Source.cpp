@@ -8,18 +8,19 @@ struct ppData {
 };
 
 void bullshit();
+void pullOut();
 
 int main() {
 	setlocale(LC_ALL, "ukr");
-	cout << "Ëàñêàâî, áëÿòü, ïðîñèìî äî ïðîãðàìè ïåí³ñ.\n";
-	cout <<	"Âèáåð³òü âàøó ä³þ. '1'-Âèì³ðÿòè ñòâîë. '2'-Ñïèñîê âèì³ðÿíèõ.\n";
+	cout << "Ëàñêàâî, áëÿòü, ïðîñèìî äî ïðîãðàìè ïåíiñ.\n";
+rewind: cout << "Âèáåðiòü âàøó äiþ. '1'-Âèìiðÿòè ñòâîë. '2'-Ñïèñîê âèìiðÿíèõ.\n";
 	int choice;
 	cin >> choice;
 	switch (choice) {
 	case 1:bullshit(); break;
-	case 2:bullshit(); break;
+	case 2:pullOut(); break;
 	}
-	bullshit();
+	goto rewind;
 	system("pause");
 	return 0;
 }
@@ -27,7 +28,7 @@ int main() {
 void bullshit() {
 	ppData pp;
 	float size;
-	cout << "Ââåäè ³ìÿ: ";
+	cout << "Ââåäè iìÿ: ";
 	cin >> pp.name;
 	kastrat: cout << "Ââåäè ðîçìið ñâîãî ñòâîëà: ";
 	cin >> size;
@@ -51,4 +52,13 @@ void bullshit() {
 		cout << "Ààà, òî â òåáå âèÿâëÿºòüñÿ ïiçäà! Òîäi ¿¿ ãëèáèíà: " << size*10 << "ñì." << endl;
 	}
 	else if (size < -20) cout << "ªÁÀÒÜ ÒÈ ØËÞÕÀ! ÑÓÊÀÀÀÀ ÀÕÀÕÀÕÀÕÀÕ\n";
+
+}
+
+void pullOut() {
+	ppData pp;
+	cout << "-----------------------------------------------" << endl;
+	cout << "|    IÌß     |  ÏIÇÄÜÎÆ  |  ÏÐÀÂÄÈÂÈÉ ÐÎÇÌIÐ  |" << endl;
+	cout << "|" << pp.name << "|" << pp.size << "|" << pp.trueSize << "|" << endl;
+	cout << "-----------------------------------------------" << endl;
 }
