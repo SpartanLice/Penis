@@ -1,11 +1,14 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
+const int max = 100;
+int measure = 0;
 struct ppData {
 	char name[20];
 	float size;
 	float trueSize;
-};
+}pp[max];
 
 void bullshit();
 void pullOut();
@@ -26,20 +29,19 @@ rewind: cout << "Âèáåðiòü âàøó äiþ. '1'-Âèìiðÿòè ñòâîë. '2'-Ñïèñîê âèìiðÿíèõ.\n"
 }
 
 void bullshit() {
-	ppData pp;
 	float size;
 	cout << "Ââåäè iìÿ: ";
-	cin >> pp.name;
+	cin >> pp[measure].name;
 	kastrat: cout << "Ââåäè ðîçìið ñâîãî ñòâîëà: ";
 	cin >> size;
-	pp.size = size;
+	pp[measure].size = size;
 	if (size > 20) {
 		cout << "¯áàòü òè ðîçiéøîâñÿ, â òåáå êîìïëåêñè äàëáàéîá? Äàâàé ïî ÷åñíîìó ÿê âñi, äàëáàéîá.\n";
 		goto kastrat;
 	}
 	else if (size > 0) {
 		size *= 0.1f;
-		pp.trueSize = size;
+		pp[measure].trueSize = size;
 		cout << "Íå ïiçäè. Òâié ðîçìið: " << size << "ñì." << endl;
 	}
 	else if (size == 0) {
@@ -48,17 +50,19 @@ void bullshit() {
 	}
 	else if (size < 0 && size >= -20) {
 		size = -size;
-		pp.trueSize = size*10;
+		pp[measure].trueSize = size*10;
 		cout << "Ààà, òî â òåáå âèÿâëÿºòüñÿ ïiçäà! Òîäi ¿¿ ãëèáèíà: " << size*10 << "ñì." << endl;
 	}
 	else if (size < -20) cout << "ªÁÀÒÜ ÒÈ ØËÞÕÀ! ÑÓÊÀÀÀÀ ÀÕÀÕÀÕÀÕÀÕ\n";
-
+	measure++;
 }
 
 void pullOut() {
-	ppData pp;
 	cout << "-----------------------------------------------" << endl;
-	cout << "|    IÌß     |  ÏIÇÄÜÎÆ  |  ÏÐÀÂÄÈÂÈÉ ÐÎÇÌIÐ  |" << endl;
-	cout << "|" << pp.name << "|" << pp.size << "|" << pp.trueSize << "|" << endl;
+	cout << "|     IÌß     |  ÏIÇÄÜÎÆ  |  ÏÐÀÂÄÈÂÈÉ ÐÎÇÌIÐ  |" << endl;
+	for (int i = 0; i < measure; i++) {
+		cout << "-----------------------------------------------" << endl;
+		cout << "|" << setw(9) << pp[i].name << setw(5) << "|" << setw(5) << pp[i].size << "ñì" << setw(5) << "|" << setw(9) << pp[i].trueSize << "ñì" << setw(10) << "|" << endl;
+	}
 	cout << "-----------------------------------------------" << endl;
 }
